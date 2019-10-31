@@ -37,6 +37,12 @@ public class ServletInitialParam extends HttpServlet {
 		out.println("<html><body>");
 		out.println("Initial Param maxRecPerPage " +getInitParameter("maxRecPerPage"));
 		out.println("<br>");
+		out.println("<br>");
+		out.println("Context Parameter DefaultCostCode " +getServletContext().getInitParameter("DefaultCostCode"));
+		out.println("<br>");
+		out.println("<br>");
+		out.println("Context Parameter DefaultDiscountPercent " +getServletContext().getInitParameter("DefaultDiscountPercent"));
+		
 		out.println("</body></html>");
 	}
 
