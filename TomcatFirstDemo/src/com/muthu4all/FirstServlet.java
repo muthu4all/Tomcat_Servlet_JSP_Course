@@ -34,7 +34,11 @@ public class FirstServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<html><body>");
+		out.println("This is POST method");
+		out.println("</body></html>");
 	}
 
 }
