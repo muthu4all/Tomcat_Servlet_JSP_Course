@@ -23,7 +23,11 @@ public class FirstServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
-		out.println("This is GET method");
+		out.println("Customer name is : "
+				+request.getParameter("customerName")
+				+"... "
+				+"Customer age is : "
+				+request.getParameter("customerAge"));
 		out.println("</body></html>");
 		
 	}
@@ -37,7 +41,11 @@ public class FirstServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
-		out.println("This is POST method");
+		out.println("Customer name is : "
+				+request.getParameter("customerName")
+				+"... "
+				+"Customer age is : "
+				+request.getParameter("customerAge"));
 		out.println("</body></html>");
 	}
 
