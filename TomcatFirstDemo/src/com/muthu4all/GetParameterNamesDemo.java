@@ -32,14 +32,33 @@ public class GetParameterNamesDemo extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
-
+		/*
 		Enumeration<String> parameterNames = request.getParameterNames();
 		while (parameterNames.hasMoreElements()) {
 			String parameterName = parameterNames.nextElement();
 			out.println("Parameter = " + parameterName);
 			out.println("<br>");
 			}
+		*/
+		Enumeration<String> parameterNames = request.getParameterNames();
 
+		while (parameterNames.hasMoreElements()) {
+
+			String paramName = parameterNames.nextElement();
+			out.write(paramName);
+			out.write("\t\t :");
+
+			String[] paramValues = request.getParameterValues(paramName);
+			for (int i = 0; i < paramValues.length; i++) {
+				String paramValue = paramValues[i];
+				out.write("\t" + paramValue);
+			}
+			out.write("<br>");
+
+		}
+		
+		
+		
 		out.close(); 
 	}
 
