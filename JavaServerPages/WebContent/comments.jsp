@@ -20,7 +20,7 @@ Test for HTML Comment
 
 Test for literals. \ will be used to escape. 
 <br>
-<%="Literal %\> must be escaped"%> 
+
 <br>
 This is template text and <\% is not a start of a scriptlet.
 <br>
