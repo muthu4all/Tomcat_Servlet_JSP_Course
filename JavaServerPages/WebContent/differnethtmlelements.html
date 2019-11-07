@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Different Form Elements</title>
+</head>
+<body>
+<form action="htmlinputelementresult.jsp" method="post">
+
+		<br> What is your name ? <input type="text" name="customerName" />
+		<br> What is your age ? <input type="text" name="customerAge" />
+		<br> Hobbies : <input type="checkbox" name="hobbies"
+			value="reading">Reading <input type="checkbox" name="hobbies"
+			value="writing">Writing <input type="checkbox" name="hobbies"
+			value="sports">Sports <input type="checkbox" name="hobbies"
+			value="singing">Singing <input type="checkbox" name="hobbies"
+			value="cooking">Cooking <br> How many hours do you spend
+		on Hobbies? <input type="radio" name="hobbyduration" value=1>1
+		hour <input type="radio" name="hobbyduration" value=2>2 hours
+		<input type="radio" name="hobbyduration" value=3>3 hours <input
+			type="radio" name="hobbyduration" value=4>4 hours <input
+			type="radio" name="hobbyduration" value=4>5 hours <br>
+
+		What is your favorite subject? <select name="subject">
+			<option value="maths">Maths</option>
+			<option value="language">Language</option>
+			<option value="economics">Economics</option>
+			<option value="science">Science</option>
+		</select> <br> Please enter the OTP: <input type="password" name="otp" />
+
+
+		<br> Feedback:
+		<textarea rows="5" cols="30" name="feedback"></textarea>
+		<br> <input type="submit" value="Submit">
+	</form>
+</body>
+</html>
