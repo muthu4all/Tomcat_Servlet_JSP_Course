@@ -72,6 +72,15 @@ public class MyUserDAO {
         closeJDBCConnection();        
 	
 	}
+	public void removeUser(int userId)  throws SQLException  {
+    	String sql = "DELETE FROM myusers WHERE userid=?";
+    	makeJDBCConnection();
+    	PreparedStatement prepstmt = myConnection.prepareStatement(sql);
+    	prepstmt.setInt(1, userId);
+    	prepstmt.executeUpdate();
+    	prepstmt.close();
+    	closeJDBCConnection();
+	}
     
     
 }

@@ -39,6 +39,9 @@ public class UserController extends HttpServlet {
             case "/insert_user":
                 insertUser(req, resp);
                 break;
+            case "/delete_user":
+                deleteUser(req, resp);
+                break;
 			 case "/list_users":
 	             listUsers(req, resp);
 	             break;
@@ -73,6 +76,13 @@ public class UserController extends HttpServlet {
     	RequestDispatcher rd = req.getRequestDispatcher("add_user.jsp");
         rd.forward(req, resp);
     } 
+    private void deleteUser (HttpServletRequest req, HttpServletResponse resp)
+    		throws SQLException, IOException, ServletException
+    {
+    	int id = Integer.parseInt(req.getParameter("userid"));
+    	myUserDao.removeUser(id);
+        resp.sendRedirect("listusers");    	
+    }	
     
     private void insertUser (HttpServletRequest req, HttpServletResponse resp)
     		throws SQLException, IOException, ServletException

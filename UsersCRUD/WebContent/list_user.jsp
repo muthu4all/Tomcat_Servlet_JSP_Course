@@ -27,6 +27,10 @@
            <td><c:out value="${user.lastname}" /></td>
            <td><c:out value="${user.age}" /></td>
            <td><c:out value="${user.position}" /></td>
+           <td>
+           	<a href="delete_user?userid=<c:out value='${user.userid}' />">Delete User</a>  
+           </td>
+
 	 
 	 </tr>
 	 
