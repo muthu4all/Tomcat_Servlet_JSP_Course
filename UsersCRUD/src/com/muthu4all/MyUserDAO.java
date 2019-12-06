@@ -81,6 +81,41 @@ public class MyUserDAO {
     	prepstmt.close();
     	closeJDBCConnection();
 	}
+	
+    public MyUserBean getUserById(int userId)  throws SQLException  {
+    	MyUserBean myUserBean = new MyUserBean();
+    	String sql = "SELECT * FROM myusers WHERE userid=?";
+    	makeJDBCConnection();
+    	PreparedStatement prepstmt = myConnection.prepareStatement(sql);
+    	prepstmt.setInt(1, userId);
+    	ResultSet reSet = prepstmt.executeQuery();
+        if (reSet.next()) {
+        	myUserBean.setUserid(reSet.getInt("userid"));
+        	myUserBean.setFirstname(reSet.getString("firstname"));
+        	myUserBean.setLastname(reSet.getString("lastname"));
+        	myUserBean.setAge(reSet.getInt("age"));
+        	myUserBean.setPosition(reSet.getString("position"));
+        }
+        reSet.close();
+        prepstmt.close();
+        closeJDBCConnection();
+    	return myUserBean;
+    }
     
+    public void editUser(MyUserBean myUserBean)  throws SQLException  {    	
+    	String sql = "UPDATE myusers SET firstname=?, lastname=?, age=?, position=?" +
+                " WHERE userid=?";
+    	makeJDBCConnection();
+    	PreparedStatement prepstmt = myConnection.prepareStatement(sql);
+    	prepstmt.setString(1, myUserBean.getFirstname());
+        prepstmt.setString(2, myUserBean.getLastname());            
+        prepstmt.setInt(3, myUserBean.getAge());
+        prepstmt.setString(4, myUserBean.getPosition());
+        prepstmt.setInt(5, myUserBean.getUserid());
+        prepstmt.executeUpdate();
+        prepstmt.close();
+        closeJDBCConnection();
+    	
+    }	
     
 }

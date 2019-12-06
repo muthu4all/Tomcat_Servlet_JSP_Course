@@ -19,6 +19,8 @@
         <th>Last Name</th>
         <th>Age</th>
         <th>Profession</th>
+        <th>Edit / Delete</th>
+        
 	</tr>
 	 <c:forEach var="user" items="${userList}">
 	 <tr>
@@ -28,6 +30,8 @@
            <td><c:out value="${user.age}" /></td>
            <td><c:out value="${user.position}" /></td>
            <td>
+           	<a href="edit_user_form?userid=<c:out value='${user.userid}' />">Edit User</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
            	<a href="delete_user?userid=<c:out value='${user.userid}' />">Delete User</a>  
            </td>
 

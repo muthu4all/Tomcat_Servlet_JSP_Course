@@ -45,6 +45,13 @@ public class UserController extends HttpServlet {
 			 case "/list_users":
 	             listUsers(req, resp);
 	             break;
+            case "/update_user":
+                updateUser(req, resp);
+                break;
+			 case "/edit_user_form":
+                showEditUserForm(req, resp);
+                break;
+	             
 	         default:
 	             listUsers(req, resp);
 	             break;
@@ -76,6 +83,33 @@ public class UserController extends HttpServlet {
     	RequestDispatcher rd = req.getRequestDispatcher("add_user.jsp");
         rd.forward(req, resp);
     } 
+    
+    private void showEditUserForm (HttpServletRequest req, HttpServletResponse resp)
+    		throws SQLException, IOException, ServletException
+    {
+    	int id = Integer.parseInt(req.getParameter("userid"));
+    	MyUserBean myUser = myUserDao.getUserById(id);
+    	RequestDispatcher rd = req.getRequestDispatcher("edit_user.jsp"); 
+    	req.setAttribute("user", myUser);
+        rd.forward(req, resp);    	
+    	
+    }
+
+    private void updateUser (HttpServletRequest req, HttpServletResponse resp)
+    		throws SQLException, IOException, ServletException
+    {
+    	int id = Integer.parseInt(req.getParameter("userid"));
+    	MyUserBean myuser = new MyUserBean();
+        myuser.setUserid(id);
+        myuser.setFirstname(req.getParameter("firstname"));
+        myuser.setLastname(req.getParameter("lastname"));
+        myuser.setAge(Integer.parseInt(req.getParameter("age")));
+        myuser.setPosition(req.getParameter("position"));
+        myUserDao.editUser(myuser);
+        resp.sendRedirect("listusers");
+    	
+    }
+    
     private void deleteUser (HttpServletRequest req, HttpServletResponse resp)
     		throws SQLException, IOException, ServletException
     {
