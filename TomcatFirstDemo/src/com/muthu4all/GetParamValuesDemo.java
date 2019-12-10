@@ -10,11 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class FirstServlet
+ * Servlet implementation class GetParamValuesDemo
  */
-@WebServlet("/FirstServlet")
-public class FirstServlet extends HttpServlet {
+@WebServlet("/GetParamValuesDemo")
+public class GetParamValuesDemo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public GetParamValuesDemo() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,30 +31,24 @@ public class FirstServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
-		out.println("Customer name is : "
-				+request.getParameter("customerName")
-				+"... "
-				+"Customer age is : "
-				+request.getParameter("customerAge"));
-		out.println("</body></html>");
+
+		String[] values = request.getParameterValues("hobbies");
+		if (values != null) {
+			out.println("Selected Hobbies...");
+			for (int i = 0; i < values.length; i++) {
+				out.println("<li>" + values[i] + "</li>");
+			}
+		}
+		out.close();
 		
 	}
-		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<html><body>");
-		out.println("Customer name is : "
-				+request.getParameter("customerName")
-				+"... "
-				+"Customer age is : "
-				+request.getParameter("customerAge"));
-		out.println("</body></html>");
+		doGet(request, response);
 	}
 
 }
