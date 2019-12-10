@@ -14,7 +14,7 @@ session.setAttribute("mylanguage","JSP");
 <br>
 Setting a cookie 'location' as 'chennai' :
 <%  
-Cookie loc =new Cookie("location","chennai");  
+Cookie loc =new Cookie("location","Chennai");  
 response.addCookie(loc);  
 %>
 <br>
